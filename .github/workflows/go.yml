@@ -23,10 +23,7 @@ jobs:
       run: go build ./...
 
     - name: Test
-      run:  |
-        go test -race -coverprofile=coverage.out.tmp -covermode=atomic ./...
-        cat coverage.out.tmp | grep -v ".pb.go" > coverage.out
-        rm coverage.out.tmp
+      run: go test -race -coverprofile=coverage.out.tmp -covermode=atomic ./...
     - name: Upload coverage to Codecov
       run: bash <(curl -s https://codecov.io/bash)
 
